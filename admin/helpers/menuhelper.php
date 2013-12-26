@@ -25,6 +25,11 @@ class SocialpromoterMenuhelper{
     public static function addSubmenu($vName = 'dashboard'){
         
         JSubMenuHelper::addEntry(
+            JText::_('Articles'),
+            'index.php?option='.self::$option.'&view=article',
+            ($vName == 'article')
+        );
+        JSubMenuHelper::addEntry(
             JText::_('Dashboard'),
             'index.php?option='.self::$option.'&view=dashboard',
             ($vName == 'dashboard')
