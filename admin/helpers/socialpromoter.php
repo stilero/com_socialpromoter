@@ -13,7 +13,21 @@
 
 // no direct access
 defined('_JEXEC') or die('Restricted access'); 
-
-class Socialpromoter{
+jimport( 'joomla.plugin.helper' );
+class SocialpromoterHelper{
+    /**
+     * Checks if the main component is installed and runable
+     * @return boolean
+     */
+    public static function canRun(){
+        return file_exists(JPATH_ADMINISTRATOR.DS.'components'.DS.'com_socialpromoter'.DS.'helpers'.DS.'socialpromoter.php');
+    }
     
+    /**
+     * Returns a list with all Social Promoter plugins installed
+     * @return array Array with all the plugins
+     */
+    public static function getPlugins(){
+        return ;
+    }
 }

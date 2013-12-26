@@ -13,11 +13,14 @@
 defined('_JEXEC') or die('Restricted access'); 
 
 JHTML::addIncludePath(JPATH_COMPONENT.DS.'helpers');
+JLoader::register('SocialpromoterImporter', JPATH_ADMINISTRATOR.DS.'components'.DS.'com_socialpromoter'.DS.'helpers'.DS.'importer.php');
+SocialpromoterImporter::importHelpers();
+SocialpromoterImporter::importLibrary();
 require_once JPATH_COMPONENT.DS.'controller.php';
 $controllerName = JRequest::getWord('view');
 
 if ( $controllerName) { 
-    $path = JPATH_COMPONENT.DS.'controllers'.DS.$controller.'.php';
+    $path = JPATH_COMPONENT.DS.'controllers'.DS.$controllerName.'.php';
     if ( file_exists($path)) {
         require_once $path;
     } else {       

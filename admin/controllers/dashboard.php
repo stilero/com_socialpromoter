@@ -15,12 +15,12 @@ defined('_JEXEC') or die('Restricted access');
 // import joomla controller library
 jimport('joomla.application.component.controller');
 
-class SocialpromoterControllerDashboard extends JController{
+class SocialpromoterControllerDashboard extends JControllerLegacy{
     
     public static $modelName = 'dashboard';
     public static $viewName = 'dashboard';
     
-    public function display(){
+    public function display($cachable = false, $urlparams = false){
         //Set Default View and Model
         $view =& $this->getView( self::$viewName, 'html' );
         $model =& $this->getModel(  self::$modelName );

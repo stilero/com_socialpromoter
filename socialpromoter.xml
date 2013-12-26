@@ -83,6 +83,7 @@
                     <filename>controller.php</filename>
                     <folder>views</folder>
                     <folder>controllers</folder>
+                    <folder>library</folder>
                     <folder>helpers</folder>
                     <folder>models</folder>
                     <!-- SQL files section -->
