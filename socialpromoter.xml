@@ -9,18 +9,16 @@
 	<version>1.0</version>
 	<license>GPLv2</license>
 	<description>Description</description>
-        <!--
-	<install>
+        <install>
             <sql>
-                <file driver="mysql" charset="utf8">sql/install.mysql.sql</file>
+                <file driver="mysql" charset="utf8">sql/install.sql</file>
             </sql>
 	</install>
 	<uninstall>
             <sql>
-                <file driver="mysql" charset="utf8">sql/uninstall.mysql.sql</file>
+                <file driver="mysql" charset="utf8">sql/uninstall.sql</file>
             </sql>
 	</uninstall>
-        -->
         <!-- Site Main File Copy Section -->
 	<!-- Note the folder attribute: This attribute describes the folder
 		to copy FROM in the package to install therefore files copied
@@ -85,11 +83,10 @@
                     <folder>controllers</folder>
                     <folder>library</folder>
                     <folder>helpers</folder>
+                    <folder>assets</folder>
                     <folder>models</folder>
-                    <!-- SQL files section -->
-                    <!--
+                    <folder>tables</folder>
                     <folder>sql</folder>
-                    -->
             </files>
             <!--
             <languages folder="language">

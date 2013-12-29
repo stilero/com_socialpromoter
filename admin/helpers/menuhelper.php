@@ -30,6 +30,11 @@ class SocialpromoterMenuhelper{
             ($vName == 'article')
         );
         JSubMenuHelper::addEntry(
+            JText::_('Images'),
+            'index.php?option='.self::$option.'&view=media',
+            ($vName == 'media')
+        );
+        JSubMenuHelper::addEntry(
             JText::_('Dashboard'),
             'index.php?option='.self::$option.'&view=dashboard',
             ($vName == 'dashboard')
@@ -39,6 +44,11 @@ class SocialpromoterMenuhelper{
             JText::_('Plugins'),
             'index.php?option='.self::$option.'&view=plugins',
             ($vName == 'plugins')
+        );
+        JSubMenuHelper::addEntry(
+            JText::_('Queue'),
+            'index.php?option='.self::$option.'&view=queue',
+            ($vName == 'queue')
         );
     }
 }
