@@ -21,7 +21,7 @@ JLoader::register('SocialpromoterMenuhelper', JPATH_ADMINISTRATOR.DS.'components
 /**
  * HTML View class for the HelloWorld Component
  */
-class SocialpromoterViewQueue extends JViewLegacy{
+class SocialpromoterViewQueues extends JViewLegacy{
     
     /*
     function display($tpl = null) {
@@ -54,6 +54,7 @@ class SocialpromoterViewQueue extends JViewLegacy{
         SocialpromoterMenuhelper::addSubmenu('queue');
         JSession::checkToken('get') or die( 'Invalid Token' );
         $model = $this->getModel();
+        $app = JFactory::getApplication();
         $path = $app->input->getString('path');
         $result = $model->add($path);
         $this->assignRef('result', $result);

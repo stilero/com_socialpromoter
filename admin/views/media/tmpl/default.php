@@ -42,7 +42,7 @@ defined('_JEXEC') or die('Restricted access');
                             <input type="hidden" name="option" value="com_socialpromoter" />
                             <input type="hidden" name="task" value="add" />
                             <input type="hidden" name="format" value="raw" />
-                            <input type="hidden" name="view" value="queue" />
+                            <input type="hidden" name="view" value="queues" />
                             <input type="hidden" name="row" value="row<?php echo $i++; ?>" />
                             <input type="hidden" name="path" value="<?php echo $item; ?>" />
                             <?php echo JHtml::_( 'form.token' ); ?>

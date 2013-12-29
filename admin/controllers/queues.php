@@ -7,6 +7,7 @@
  * @copyright  (C) 2013-dec-29 Stilero Webdesign (http://www.stilero.com)
  * @category Components
  * @license	GPLv2
+ * 
  */
 
 // no direct access
@@ -15,10 +16,10 @@ defined('_JEXEC') or die('Restricted access');
 // import joomla controller library
 jimport('joomla.application.component.controller');
 
-class SocialpromoterControllerQueue extends JControllerLegacy{
+class SocialpromoterControllerQueues extends JControllerLegacy{
     
-    public static $modelName = 'queue';
-    public static $viewName = 'queue';
+    public static $modelName = 'queues';
+    public static $viewName = 'queues';
     
     public function display($cachable = false, $urlparams = false){
         //Set Default View and Model
@@ -29,12 +30,16 @@ class SocialpromoterControllerQueue extends JControllerLegacy{
     }
     
     public function edit(){
-        $app = JFactory::getApplication();
-        $id = $app->input->getInt('id');
+        $cids = JRequest::getVar('cid', null, 'default', 'array');
+        if( $cids === null ){
+            JError::raiseError( 500,
+            'cid parameter missing from the request' );
+        }
+        $queueId = (int)$cids[0];
         $view = $this->getView( JRequest::getVar( 'view',  self::$viewName ), 'html' );
         $model = $this->getModel( self::$modelName );
         $view->setModel( $model, true );
-        $view->edit( $id );
+        $view->edit( $queueId );
     }
     
     function add(){
@@ -46,7 +51,7 @@ class SocialpromoterControllerQueue extends JControllerLegacy{
     
     function save(){
         $this->apply();
-        $redirectTo = JRoute::_('index.php?option='.JRequest::getVar('option')).'&view=queues';
+        $redirectTo = JRoute::_('index.php?option='.JRequest::getVar('option').'&task=display');
         $this->setRedirect( $redirectTo, 'Saved' );
     }
     
@@ -56,7 +61,7 @@ class SocialpromoterControllerQueue extends JControllerLegacy{
     }
     
     function cancel(){
-        $redirectTo = JRoute::_('index.php?option='.JRequest::getVar('option')).'&view=queues';
+        $redirectTo = JRoute::_('index.php?option='.JRequest::getVar('option').'&task=display');
         $this->setRedirect( $redirectTo, 'Cancelled' );
     }
     
@@ -69,5 +74,10 @@ class SocialpromoterControllerQueue extends JControllerLegacy{
         $model->delete( $cids);
         $redirectTo = JRoute::_('index.php?option='.JRequest::getVar( 'option' ).'&task=display');
         $this->setRedirect( $redirectTo, 'Deleted' );
+    }
+    
+    function  clear(){
+        $model = $this->getModel( self::$modelName );
+        $model->clear();
     }
 }

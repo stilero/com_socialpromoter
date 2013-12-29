@@ -7,7 +7,6 @@
  * @copyright  (C) 2013-dec-29 Stilero Webdesign (http://www.stilero.com)
  * @category Components
  * @license	GPLv2
- * 
  */
 
 // No direct access to this file
@@ -15,24 +14,21 @@ defined('_JEXEC') or die('Restricted access');
  
 // import Joomla view library
 jimport('joomla.application.component.view');
-JLoader::register('SocialpromoterMenuhelper', JPATH_ADMINISTRATOR.DS.'components'.DS.'com_socialpromoter'.DS.'helpers'.DS.'menuhelper.php'); 
-
  
 /**
  * HTML View class for the HelloWorld Component
  */
 class SocialpromoterViewQueue extends JViewLegacy{
+    protected $form;
     
-    function display($tpl = null) {
-        JToolBarHelper::title(JText::_('Queue'), 'queue');
-        JToolBarHelper::deleteList();
-        //JToolBarHelper::editListX();
-        //JToolBarHelper::addNewX();
-        
-        SocialpromoterMenuhelper::addSubmenu('queue');
-        $model = $this->getModel('queue');
-        $items = $model->getItems();
-        $this->assignRef('items', $items);
+    public function display($tpl=null) {
+        $items = $this->get('Items');
+        $state = $this->get('State');
+        $this->form = $this->get('Form');
+        var_dump($this->form);exit;
+        $this->sortDirection = $state->get('list.direction');
+        $this->sortColumn = $state->get('list.ordering');
+ 
         parent::display($tpl);
     }
     
@@ -40,30 +36,10 @@ class SocialpromoterViewQueue extends JViewLegacy{
         JToolBarHelper::title(JText::_('Com_socialpromoter Queue: [<small>Edit</small>]', 'generic.png'));
         JToolBarHelper::save();
         JToolBarHelper::cancel('cancel', 'Close');
+        $this->form = $this->get('Form');
         $model = $this->getModel();
-        $item = $model->getItem( $id );
+        $item = $model->getQueue( $id );
         $this->assignRef('item', $item);
-        parent::display();
-    }
-    
-    
-    
-    function add(){
-        //JToolBarHelper::title( JText::_('Com_socialpromoter Queue')
-                //. ': [<small>Add</small>]' );
-        //JToolBarHelper::save();
-        //JToolBarHelper::cancel();
-        SocialpromoterMenuhelper::addSubmenu('queue');
-        $app = JFactory::getApplication();
-        JSession::checkToken('get') or die( 'Invalid Token' );
-        $model = $this->getModel();
-        $path = $app->input->getString('path');
-        $result = false;
-        if(!$model->isQueued($path)){
-            $result = $model->add($path);
-        }
-        $this->assignRef('result', $result);
-        $this->setLayout('raw');
         parent::display();
     }
 }

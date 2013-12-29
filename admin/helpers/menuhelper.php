@@ -47,8 +47,8 @@ class SocialpromoterMenuhelper{
         );
         JSubMenuHelper::addEntry(
             JText::_('Queue'),
-            'index.php?option='.self::$option.'&view=queue',
-            ($vName == 'queue')
+            'index.php?option='.self::$option.'&view=queues',
+            ($vName == 'queues')
         );
     }
 }
