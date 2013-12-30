@@ -33,7 +33,7 @@ class SocialpromoterViewMedia extends JViewLegacy{
         JHTML::script('https://code.jquery.com/jquery.js');
         JHTML::script($js);
         $model = $this->getModel();
-        $items=$model->getMediaInFolder(JPATH_ROOT.DS.'images', false);
+        $items=$model->getUnqueuedMedia(JPATH_ROOT.DS.'images', false);
         $this->assignRef('items', $items);
         parent::display($tpl);
     }

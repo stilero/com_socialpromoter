@@ -71,7 +71,7 @@ jQuery(function($){
     
         $.getJSON('index.php', params, function(data){
             if(data.meta.code == '200'){
-                successAlert('<strong>Added!</strong> Image added to queue');
+                successAlert('<strong>Added!</strong> Image deleted from queue');
                 hideRow(row.value);
             }else{
                 failAlert('<strong>Warning!</strong><br />' + data.meta.error_message, '#likedialog');

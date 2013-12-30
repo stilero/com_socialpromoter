@@ -61,4 +61,17 @@ class SocialpromoterViewQueues extends JViewLegacy{
         $this->setLayout('raw');
         parent::display();
     }
+    function delete($id){
+        //JToolBarHelper::title( JText::_('Com_socialpromoter Queue')
+                //. ': [<small>Add</small>]' );
+        //JToolBarHelper::save();
+        //JToolBarHelper::cancel();
+        SocialpromoterMenuhelper::addSubmenu('queue');
+        JSession::checkToken('get') or die( 'Invalid Token' );
+        $model = $this->getModel();
+        $result = $model->delete($id);
+        $this->assignRef('result', $result);
+        $this->setLayout('delete');
+        parent::display();
+    }
 }

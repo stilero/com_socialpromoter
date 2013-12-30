@@ -30,6 +30,9 @@ class SocialpromoterViewQueues extends JViewLegacy{
         //JToolBarHelper::addNewX();
         
         SocialpromoterMenuhelper::addSubmenu('queues');
+        $js = JUri::root().'administrator/components/com_socialpromoter/assets/js/queuedelete.js';
+        JHTML::script('https://code.jquery.com/jquery.js');
+        JHTML::script($js);
         $model = $this->getModel('queues');
         $items = $model->getItems();
         $this->assignRef('items', $items);

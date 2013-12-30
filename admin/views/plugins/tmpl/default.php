@@ -13,7 +13,6 @@ defined('_JEXEC') or die('Restricted access');
 JHtml::addIncludePath(JPATH_COMPONENT.'/helpers/html');
 jimport( 'joomla.plugin.helper' );
     
-
 JHtml::_('bootstrap.tooltip');
 JHtml::_('behavior.multiselect');
 JHtml::_('formbehavior.chosen', 'select');
@@ -28,6 +27,7 @@ JHtml::_('formbehavior.chosen', 'select');
 		Joomla.tableOrdering(order, dirn, '');
 	}
 </script>
+<h1>Published Social Promoter plugins</h1>
 <form action="<?php echo JRoute::_('index.php?option=com_socialpromoter&view=plugins'); ?>" method="post" name="adminForm" id="adminForm">
 	<div id="main-container">
 		<table class="table table-striped" id="articleList">
@@ -54,7 +54,7 @@ JHtml::_('formbehavior.chosen', 'select');
                             <?php
                             $dispatcher = JDispatcher::getInstance();
                             JPluginHelper::importPlugin($item->type, $item->name, false);
-                            $className = 'plgSystem'.ucfirst($item->name);
+                            $className = 'plgSocialpromoter'.ucfirst($item->name);
                             $name = 'name';
                             $desc = 'desc';
                             

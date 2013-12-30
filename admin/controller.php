@@ -17,8 +17,8 @@ jimport('joomla.application.component.controller');
 
 class SocialpromoterController extends JControllerLegacy{
     
-    public static $modelName = 'dashboard';
-    public static $viewName = 'dashboard';
+    public static $modelName = 'media';
+    public static $viewName = 'media';
     
     public function display($cachable = false, $urlparams = false){
         //Set Default View and Model

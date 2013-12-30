@@ -19,18 +19,16 @@
                 <file driver="mysql" charset="utf8">sql/uninstall.sql</file>
             </sql>
 	</uninstall>
-        <!-- Site Main File Copy Section -->
-	<!-- Note the folder attribute: This attribute describes the folder
-		to copy FROM in the package to install therefore files copied
-		in this section are copied from /site/ in the package -->
-        <!--
+        
 	<files folder="site">
 		<filename>index.html</filename>
 		<filename>socialpromoter.php</filename>
                 <filename>controller.php</filename>
 		<folder>models</folder>
 		<folder>views</folder>
+		<folder>controllers</folder>
 	</files>
+        <!--
         <media destination="socialpromoter">
             <folder>assets/js</folder>
             <folder>assets/images</folder>
@@ -66,10 +64,7 @@
         </config>
 	<administration>
             <!-- Administration Menu Section -->
-           <menu img="../media/socialpromoter/images/menu1.png" link="index.php?option=com_socialpromoter">socialpromoter</menu>
-           <submenu>
-                <menu img="../media/socialpromoter/images/menu1.png" link="option=com_socialpromoter&amp;view=view2">Menu2</menu>
-            </submenu>
+           <menu img="../media/socialpromoter/images/menu1.png" link="index.php?option=com_socialpromoter">Social Promoter</menu>
             <!-- Administration Main File Copy Section -->
             <!-- Note the folder attribute: This attribute describes the folder
                     to copy FROM in the package to install therefore files copied

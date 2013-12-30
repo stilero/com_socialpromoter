@@ -49,6 +49,14 @@ class SocialpromoterControllerQueues extends JControllerLegacy{
         $view->add();
     }
     
+    function delete(){
+        $view = $this->getView( self::$viewName, 'raw' );
+        $model = $this->getModel( self::$modelName );
+        $id = JFactory::getApplication()->input->getInt('id');
+        $view->setModel( $model, true );
+        $view->delete($id);
+    }
+    
     function save(){
         $this->apply();
         $redirectTo = JRoute::_('index.php?option='.JRequest::getVar('option').'&task=display');

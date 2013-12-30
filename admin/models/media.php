@@ -40,7 +40,7 @@ jimport('joomla.filesystem.folder');
 class SocialpromoterModelMedia extends JModelItem{
     protected $_table;
     protected $_defaultSortColumn = 'default_column_name';
-    static private $_tableName = '#__com_socialpromoter_medias';
+    static private $_tableName = '#__com_socialpromoter_queue';
     
     public function __construct($config = array()) {
         //Change the column_name1,2,3 to the column names you want sortable
@@ -77,6 +77,28 @@ class SocialpromoterModelMedia extends JModelItem{
             $convertedFiles = $files;
         }
         return $convertedFiles;
+    }
+    
+    /**
+     * Returns all media not in queue
+     * @return array
+     */
+    public function getUnqueuedMedia($base, $asUri = false){
+        $db = JFactory::getDbo();
+        $query = $db->getQuery(true);
+        $query->select('url');
+        $query->from(self::$_tableName);
+        $db->setQuery($query);
+        $queuedUrls = $db->loadColumn();
+        $medias = $this->getMediaInFolder($base, $asUri);
+        $medias = array_map(array($this, 'pathToUri'), $medias);
+        $unqueues = array();
+        foreach ($medias as $media) {
+            if(!in_array($media, $queuedUrls)){
+                $unqueues[] = $media;
+            }
+        }
+        return $unqueues;
     }
     
     function getNewMedia(){

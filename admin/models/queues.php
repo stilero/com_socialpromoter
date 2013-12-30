@@ -48,12 +48,30 @@ class SocialpromoterModelQueues extends JModelLegacy{
         $db = JFactory::getDbo();
         $this->_table = $db->nameQuote(self::$_tableName);
     }
+    
+    /**
+     * Retrieves all items currently queued
+     * @return stdClass Items
+     */
     public function getItems(){
         $db = JFactory::getDbo();
         $query = $db->getQuery(true);
         $query->select('*');
         $query->from(self::$_tableName);
         $query->where('posted='.$db->q('0000-00-00 00:00:00'));
+        $db->setQuery($query);
+        $this->_items = $db->loadObjectList();
+        return $this->_items;
+    }
+    /**
+     * Retrieves all items
+     * @return type
+     */
+    public function getAllItems(){
+        $db = JFactory::getDbo();
+        $query = $db->getQuery(true);
+        $query->select('url');
+        $query->from(self::$_tableName);
         $db->setQuery($query);
         $this->_items = $db->loadObjectList();
         return $this->_items;
@@ -142,16 +160,16 @@ class SocialpromoterModelQueues extends JModelLegacy{
 //        return true;
 //    }
 
-    public function delete($cids){
+    public function delete($id){
         $db = JFactory::getDbo();
-        $id = $db->nameQuote('id');
-        $ids = implode(', ', $cids);
-        $query = 'DELETE FROM '.$this->_table.
-                ' WHERE '.$id.' IN ('.$ids.')';
+        $query = $db->getQuery(true);
+        $query->delete(self::$_tableName);
+        $query->where('id='.(int)$id);
         $db->setQuery($query);
         if( !$db->query() ){
-            $errorMsg = $this->getDBO()->getErrorMsg();
-            JError::raiseError(500, 'Error deleting: '.$errorMsg);
+            return false;
+        }else{
+            return true;
         }
     }
     

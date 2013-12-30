@@ -24,31 +24,31 @@ class SocialpromoterMenuhelper{
      */
     public static function addSubmenu($vName = 'dashboard'){
         
-        JSubMenuHelper::addEntry(
-            JText::_('Articles'),
-            'index.php?option='.self::$option.'&view=article',
-            ($vName == 'article')
-        );
+//        JSubMenuHelper::addEntry(
+//            JText::_('Articles'),
+//            'index.php?option='.self::$option.'&view=article',
+//            ($vName == 'article')
+//        );
         JSubMenuHelper::addEntry(
             JText::_('Images'),
             'index.php?option='.self::$option.'&view=media',
             ($vName == 'media')
         );
-        JSubMenuHelper::addEntry(
-            JText::_('Dashboard'),
-            'index.php?option='.self::$option.'&view=dashboard',
-            ($vName == 'dashboard')
-        );
-        
-        JSubMenuHelper::addEntry(
-            JText::_('Plugins'),
-            'index.php?option='.self::$option.'&view=plugins',
-            ($vName == 'plugins')
-        );
+//        JSubMenuHelper::addEntry(
+//            JText::_('Dashboard'),
+//            'index.php?option='.self::$option.'&view=dashboard',
+//            ($vName == 'dashboard')
+//        );
         JSubMenuHelper::addEntry(
             JText::_('Queue'),
             'index.php?option='.self::$option.'&view=queues',
             ($vName == 'queues')
         );
+        JSubMenuHelper::addEntry(
+            JText::_('Plugins'),
+            'index.php?option='.self::$option.'&view=plugins',
+            ($vName == 'plugins')
+        );
+        
     }
 }
