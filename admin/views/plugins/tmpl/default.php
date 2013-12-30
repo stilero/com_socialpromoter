@@ -27,7 +27,8 @@ JHtml::_('formbehavior.chosen', 'select');
 		Joomla.tableOrdering(order, dirn, '');
 	}
 </script>
-<h1>Published Social Promoter plugins</h1>
+<h1>Social Promoter plugins</h1>
+<p class='lead'>These are the published Social promoter plugins. </p>
 <form action="<?php echo JRoute::_('index.php?option=com_socialpromoter&view=plugins'); ?>" method="post" name="adminForm" id="adminForm">
 	<div id="main-container">
 		<table class="table table-striped" id="articleList">
@@ -65,10 +66,10 @@ JHtml::_('formbehavior.chosen', 'select');
                             
                             ?>
 				<tr class="row<?php echo $i % 2; ?>" sortable-group-id="<?php echo $item->type?>">
-					<td class="nowrap small hidden-phone">
+					<td>
 						<?php echo $this->escape($name);?>
 					</td>
-					<td class="nowrap small hidden-phone">
+					<td>
 						<?php echo $this->escape($desc);?>
 					</td>
 				</tr>

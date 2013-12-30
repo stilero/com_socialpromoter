@@ -17,11 +17,13 @@ JHtml::_('formbehavior.chosen', 'select');
 $cronUrl = JURI::base().'index.php?option=com_socialpromoter&view=cron';
 ?>
 <?php if(empty($this->items)): ?>
-    <h2><?php echo JText::_('Nothing queued'); ?></h2>
+    <h1><?php echo JText::_('Nothing queued'); ?></h1>
+    <p class='lead'>Go to the media section and add images to queue.</p>
 <?php else: ?>
     <h2>Queue</h2>
-    <p class='lead'><?php echo count($this->items); ?> images waiting in queue. Use a cron job to send on certain times. Ask your webhost for support and info about cron jobs. The example below shows a cron job that posts every day at 14:00 (server time)</p>
+    <p class='lead'><?php echo count($this->items); ?> images waiting in queue. Use a cron job to send on certain times. The example below shows a cron job that posts every day at 14:00 (server time).</p>
     <pre>0 14 * * * curl --silent '<?php echo $cronUrl; ?>'</pre>
+    <p><small>Ask your webhost for support and info about cron jobs. </small></p>
     <div id="social_promoter_alert"></div>
     
         <table class="table table-striped" id="articleList">

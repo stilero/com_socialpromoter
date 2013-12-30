@@ -12,6 +12,8 @@
 // No direct access to this file
 defined('_JEXEC') or die('Restricted access');
 ?>
+<h1>Images</h1>
+<p class='lead'>This list contains your images that haven't been posted yet.</p>
 <div id="social_promoter_alert"></div>
         <table class="table table-striped" id="articleList">
             <thead>
