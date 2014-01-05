@@ -7,27 +7,6 @@
  * @copyright  (C) 2013-dec-29 Stilero Webdesign (http://www.stilero.com)
  * @category Components
  * @license	GPLv2
- * 
- * Joomla! is free software. This version may have been modified pursuant
- * to the GNU General Public License, and as distributed it includes or
- * is derivative of works licensed under the GNU General Public License or
- * other free or open source software licenses.
- * 
- * This file is part of cron.
- * 
- * com_socialpromoter is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
- * 
- * com_socialpromoter is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- * 
- * You should have received a copy of the GNU General Public License
- * along with com_socialpromoter.  If not, see <http://www.gnu.org/licenses/>.
- * 
  */
 
 // No direct access to this file
@@ -71,5 +50,37 @@ class SocialpromoterModelCron extends JModelLegacy{
         $db->setQuery($query);
         $items = $db->loadObject();
         return $items;
+    }
+    /**
+     * Adds info to log
+     * @param array $data
+     * @return boolean
+     */
+    public function log($url, $plugin, $code, $msg){
+        $table = $this->getTable('log');
+        //$data = JRequest::get('post');
+        jimport('joomla.utilities.date');
+        $date = new JDate(JRequest::getVar('created', '', 'post'));
+        $data = array(
+            'url' => $url,
+            'plugin' => $plugin,
+            'code' => $code,
+            'msg' => $msg,
+            'created' => $date->toSql()
+        );
+        $table->reset();
+        if(!$table->bind($data)){
+            $this->setError($this->_db->getErrorMsg());
+            return false;
+        }
+        if(!$table->check()){
+            $this->setError($this->_db->getErrorMsg());
+            return false;
+        }
+        if(!$table->store()){
+            $this->setError($this->_db->getErrorMsg());
+            return false;
+        }
+        return true;
     }
 }

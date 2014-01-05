@@ -11,30 +11,31 @@
 
 // No direct access to this file
 defined('_JEXEC') or die('Restricted access');
-JHtml::_('bootstrap.tooltip');
-JHtml::_('behavior.multiselect');
-JHtml::_('formbehavior.chosen', 'select');
 ?>
 <?php if(empty($this->items)): ?>
     <h1><?php echo JText::_('No Items found'); ?></h1>
 <?php else: ?>
-    <script language="javascript" type="text/javascript">
-        function tableOrdering( order, dir, task ){
-            var form = document.adminForm;
-            form.filter_order.value = order;
-            form.filter_order_Dir.value = dir;
-            document.adminForm.submit( task );
-        }
-    </script>
     <form id="adminForm" method="post" name="adminForm">
             <table class="table table-striped" id="articleList">
                 <thead>
                     <tr class="sortable">
                         <th width="1%" class="nowrap hidden-phone">
-                            <?php echo JHTML::_( 'grid.sort', 'Name', 'DbNameColumn', $this->sortDirection, $this->sortColumn); ?>
+                            <?php echo JText::_('id'); ?>
                         </th>
                         <th width="10%" class="nowrap hidden-phone">
-                            <?php echo JHTML::_( 'grid.sort', 'Description', 'DbDescriptionColumn', $this->sortDirection, $this->sortColumn); ?>
+                            <?php echo JText::_('url'); ?>
+                        </th>
+                        <th width="5%" class="nowrap hidden-phone">
+                            <?php echo JText::_('plugin'); ?>
+                        </th>
+                        <th width="1%" class="nowrap hidden-phone">
+                            <?php echo JText::_('code'); ?>
+                        </th>
+                        <th width="10%" class="nowrap hidden-phone">
+                            <?php echo JText::_('msg'); ?>
+                        </th>
+                        <th width="10%" class="nowrap hidden-phone">
+                            <?php echo JText::_('created'); ?>
                         </th>
                     </tr>
                 </thead>
@@ -46,14 +47,23 @@ JHtml::_('formbehavior.chosen', 'select');
                                 <?php echo $item->id; ?>
                             </td>
                             <td>
+                                <img src="<?php echo $item->url; ?>" width="100" height="100" />
+                            </td>
+                            <td>
+                                <?php echo $item->plugin; ?>
+                            </td>
+                            <td>
+                                <?php echo $item->code; ?>
+                            </td>
+                            <td>
+                                <?php echo $item->msg; ?>
+                            </td>
+                            <td>
                                 <?php echo $item->created; ?>
                             </td>
                         </tr>
                     <?php endforeach; ?>
                 </tbody>
             </table>
-
-            <input type="hidden" name="filter_order" value="<?php echo $this->sortColumn; ?>" />
-            <input type="hidden" name="filter_order_Dir" value="<?php echo $this->sortDirection; ?>" />
     </form>
 <?php endif;?>

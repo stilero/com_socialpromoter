@@ -12,7 +12,12 @@
 // No direct access to this file
 defined('_JEXEC') or die('Restricted access');
 jimport( 'joomla.plugin.helper' );
-
+$url = 'http://www.test.com';
+        $plugin = 'flickeer';
+        $code = 0;
+        $msg = 'The message';
+        $this->model->log($url, $plugin, $code, $msg);
+        
 $wasPosted = false;
 if(isset($this->queue)){
     if(isset($this->items)){
@@ -24,6 +29,7 @@ if(isset($this->queue)){
             $result = $pluginClass->postImage($this->queue->url, $this->queue->title, $this->queue->description, $this->queue->tags);
             if($result && !$wasPosted){
                 $wasPosted = true;
+                $this->model->log($this->queue->url, ucfirst($item->name), 0, $result);
             }
         }
         if($wasPosted){
