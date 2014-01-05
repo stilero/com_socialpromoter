@@ -49,6 +49,10 @@ class SocialpromoterMenuhelper{
             'index.php?option='.self::$option.'&view=plugins',
             ($vName == 'plugins')
         );
-        
+        JSubMenuHelper::addEntry(
+            JText::_('Log'),
+            'index.php?option='.self::$option.'&view=logs',
+            ($vName == 'logs')
+        );
     }
 }
