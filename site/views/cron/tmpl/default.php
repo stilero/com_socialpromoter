@@ -12,12 +12,6 @@
 // No direct access to this file
 defined('_JEXEC') or die('Restricted access');
 jimport( 'joomla.plugin.helper' );
-$url = 'http://www.test.com';
-        $plugin = 'flickeer';
-        $code = 0;
-        $msg = 'The message';
-        $this->model->log($url, $plugin, $code, $msg);
-        
 $wasPosted = false;
 if(isset($this->queue)){
     if(isset($this->items)){

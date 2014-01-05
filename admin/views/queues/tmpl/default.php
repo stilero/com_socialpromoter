@@ -14,7 +14,7 @@ defined('_JEXEC') or die('Restricted access');
 JHtml::_('bootstrap.tooltip');
 JHtml::_('behavior.multiselect');
 JHtml::_('formbehavior.chosen', 'select');
-$cronUrl = JURI::base().'index.php?option=com_socialpromoter&view=cron';
+$cronUrl = JURI::root().'index.php?option=com_socialpromoter&view=cron';
 ?>
 <?php if(empty($this->items)): ?>
     <h1><?php echo JText::_('Nothing queued'); ?></h1>
