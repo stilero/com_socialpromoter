@@ -21,12 +21,15 @@ jimport('joomla.application.component.view');
 class SocialpromoterViewCron extends JViewLegacy{
     
     protected $model;
+    protected $plugin;
     
     // Overwriting JView display method
     function display($tpl = null){
+        $app = JFactory::getApplication();
+        $this->plugin = $app->input->get('plugin');
         $this->model = $this->getModel();
         $this->items = $this->model->getItems();
-        $this->queue = $this->model->getNextItem();
+        $this->queue = $this->model->getNextItem($this->plugin);
         parent::display($tpl);
     }
 }

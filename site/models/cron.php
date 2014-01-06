@@ -40,12 +40,15 @@ class SocialpromoterModelCron extends JModelLegacy{
      * Returns all unposted items from DB
      * @return object
      */
-    public function getNextItem(){
+    public function getNextItem($plugin){
         $db = JFactory::getDbo();
         $query = $db->getQuery(true);
         $query->select('*');
         $query->from('#__com_socialpromoter_queue');
         $query->where('posted='.$db->q('0000-00-00 00:00:00'));
+        if(isset($plugin)){
+            $query->where('plugin='.$db->q($plugin));
+        }
         $query->order('created ASC');
         $db->setQuery($query);
         $items = $db->loadObject();
