@@ -15,6 +15,7 @@ defined('_JEXEC') or die('Restricted access');
  
 class TableQueue extends JTable{
     var $id = 0;
+    var $plugin = '';
     var $title = '';
     var $description = '';
     var $url = '';
