@@ -11,7 +11,9 @@
 
 // no direct access
 defined('_JEXEC') or die('Restricted access'); 
-
+if(!defined('DS')){
+    define('DS', DIRECTORY_SEPARATOR);
+}
 JHTML::addIncludePath(JPATH_COMPONENT.DS.'helpers');
 JLoader::register('SocialpromoterImporter', JPATH_ADMINISTRATOR.DS.'components'.DS.'com_socialpromoter'.DS.'helpers'.DS.'importer.php');
 SocialpromoterImporter::importHelpers();

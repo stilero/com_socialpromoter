@@ -11,9 +11,9 @@
 
 // No direct access to this file
 defined('_JEXEC') or die('Restricted access');
-JHtml::_('bootstrap.tooltip');
-JHtml::_('behavior.multiselect');
-JHtml::_('formbehavior.chosen', 'select');
+//JHtml::_('bootstrap.tooltip');
+//JHtml::_('behavior.multiselect');
+//JHtml::_('formbehavior.chosen', 'select');
 $cronUrl = JURI::root().'index.php?option=com_socialpromoter&view=cron';
 $cronUrlWithPlugin = JURI::root().'index.php?option=com_socialpromoter&view=cron&plugin=stilerospflickr';
 ?>

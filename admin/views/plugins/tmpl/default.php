@@ -13,9 +13,9 @@ defined('_JEXEC') or die('Restricted access');
 JHtml::addIncludePath(JPATH_COMPONENT.'/helpers/html');
 jimport( 'joomla.plugin.helper' );
     
-JHtml::_('bootstrap.tooltip');
-JHtml::_('behavior.multiselect');
-JHtml::_('formbehavior.chosen', 'select');
+//JHtml::_('bootstrap.tooltip');
+//JHtml::_('behavior.multiselect');
+//JHtml::_('formbehavior.chosen', 'select');
 ?>
 <script type="text/javascript">
 	Joomla.orderTable = function()

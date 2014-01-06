@@ -11,7 +11,9 @@
 
 // no direct access
 defined('_JEXEC') or die('Restricted access'); 
-
+if(!defined('DS')){
+    define('DS', DIRECTORY_SEPARATOR);
+}
 JHTML::addIncludePath(JPATH_COMPONENT.DS.'helpers');
 require_once JPATH_COMPONENT.DS.'controller.php';
 $controllerName = JRequest::getWord('view');
