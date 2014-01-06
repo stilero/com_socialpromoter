@@ -15,6 +15,7 @@ JHtml::_('bootstrap.tooltip');
 JHtml::_('behavior.multiselect');
 JHtml::_('formbehavior.chosen', 'select');
 $cronUrl = JURI::root().'index.php?option=com_socialpromoter&view=cron';
+$cronUrlWithPlugin = JURI::root().'index.php?option=com_socialpromoter&view=cron&plugin=stilerospflickr';
 ?>
 <?php if(empty($this->items)): ?>
     <h1><?php echo JText::_('Nothing queued'); ?></h1>
@@ -23,6 +24,8 @@ $cronUrl = JURI::root().'index.php?option=com_socialpromoter&view=cron';
     <h2>Queue</h2>
     <p class='lead'><?php echo count($this->items); ?> images waiting in queue. Use a cron job to send on certain times. The example below shows a cron job that posts every day at 14:00 (server time).</p>
     <pre>0 14 * * * curl --silent '<?php echo $cronUrl; ?>'</pre>
+    <p>You can also choose which plugin to use by adding the plugin parameter to the cron url.</p>
+    <pre>0 14 * * * curl --silent '<?php echo $cronUrlWithPlugin; ?>'</pre>
     <p><small>Ask your webhost for support and info about cron jobs. </small></p>
     <div id="social_promoter_alert"></div>
     
