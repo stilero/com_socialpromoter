@@ -33,6 +33,9 @@ $cronUrl = JURI::root().'index.php?option=com_socialpromoter&view=cron';
                         <?php echo JText::_('image'); ?>
                     </th>
                     <th width="10%" class="nowrap hidden-phone">
+                        <?php echo JText::_('plugin'); ?>
+                    </th>
+                    <th width="10%" class="nowrap hidden-phone">
                         <?php echo JText::_('title'); ?>
                     </th>
                     <th width="20%" class="nowrap hidden-phone">
@@ -57,6 +60,11 @@ $cronUrl = JURI::root().'index.php?option=com_socialpromoter&view=cron';
                     <td>
                         <a href="<?php echo $editURL; ?>">
                             <img src="<?php echo $item->url ; ?>" width="100" height="100" />
+                        </a>
+                    </td>
+                    <td>
+                        <a href="<?php echo $editURL; ?>">
+                            <?php echo $this->escape($item->plugin); ?>
                         </a>
                     </td>
                     <td>

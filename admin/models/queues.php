@@ -7,27 +7,6 @@
  * @copyright  (C) 2013-dec-29 Stilero Webdesign (http://www.stilero.com)
  * @category Components
  * @license	GPLv2
- * 
- * Joomla! is free software. This version may have been modified pursuant
- * to the GNU General Public License, and as distributed it includes or
- * is derivative of works licensed under the GNU General Public License or
- * other free or open source software licenses.
- * 
- * This file is part of queue.
- * 
- * com_socialpromoter is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
- * 
- * com_socialpromoter is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- * 
- * You should have received a copy of the GNU General Public License
- * along with com_socialpromoter.  If not, see <http://www.gnu.org/licenses/>.
- * 
  */
 
 // No direct access to this file
@@ -36,6 +15,7 @@ defined('_JEXEC') or die('Restricted access');
 // import Joomla modelitem library
 jimport('joomla.application.component.model');
 jimport('joomla.utilities.date');
+jimport( 'joomla.plugin.helper' );
 JLoader::discover('StileroSP', JPATH_ADMINISTRATOR.'/components/com_socialpromoter/library/',true, true);
  
 class SocialpromoterModelQueues extends JModelLegacy{
@@ -95,12 +75,12 @@ class SocialpromoterModelQueues extends JModelLegacy{
         return '#'.$keyword;
     }
     /**
-     * Adds an image path to the queue
+     * Adds an image path to the queue for the plugin provided
      * @param string $imagepath URL to the image
+     * @param string $plugin Name of the plugin to use
      */
-    function add($imagepath){
+    protected function addWithPlugin($imagepath, $plugin){
         $Ipct = new StileroSPIptc($imagepath);
-        //$Exif = new StileroSPExif($imagepath);
         $title = $Ipct->title;
         $description = $Ipct->description;
         $url = str_replace(JPATH_ROOT.'/', JUri::root(), $imagepath);
@@ -108,6 +88,7 @@ class SocialpromoterModelQueues extends JModelLegacy{
         $tags = implode(', ', $hashtagged);
         $date = new JDate();
         $data = array(
+            'plugin' => $plugin,
             'title' => $title,
             'description' => $description,
             'url' => $url,
@@ -128,6 +109,17 @@ class SocialpromoterModelQueues extends JModelLegacy{
         if(!$table->store()){
             $this->setError($this->_db->getErrorMsg());
             return false;
+        }
+        return true;
+    }
+    /**
+     * Adds an image path to the queue for each plugin published
+     * @param string $imagepath URL to the image
+     */
+    function add($imagepath){
+        $plugins = JPluginHelper::getPlugin('socialpromoter');
+        foreach ($plugins as $plugin) {
+            $this->addWithPlugin($imagepath, $plugin->name);            
         }
         return true;
     }

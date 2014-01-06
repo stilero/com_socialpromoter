@@ -2,11 +2,14 @@
 <form>
     <fieldset>
         <field name="id" type="text" default="0" label="JGLOBAL_FIELD_ID_LABEL"
-                            readonly="true" class="readonly"
-                            description="JGLOBAL_FIELD_ID_DESC"/>    
-        <field name="id" type="text" default="0" label="JGLOBAL_FIELD_ID_LABEL"
             readonly="true" class="readonly"
             description="JGLOBAL_FIELD_ID_DESC"/>
+        <field name="plugin" type="text"
+            readonly="true" class="readonly"
+            size="40" label="COM_SOCIALPROMOTER_FIELD_PLUGIN_LABEL"
+            description="COM_SOCIALPROMOTER_FIELD_PLUGIN_LABEL_DESC" 
+            filter="text"
+        />
         <field name="title" type="text"
             class="inputbox input-xxlarge input-large-text"
             size="40" label="JGLOBAL_TITLE"

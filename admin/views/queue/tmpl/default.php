@@ -29,6 +29,7 @@ JHtml::_('formbehavior.chosen', 'select');
             <div class="span9">
                 <div class="form-vertical">
                         <?php echo $this->form->getControlGroup('id'); ?>
+                        <?php echo $this->form->getControlGroup('plugin'); ?>
                         <?php echo $this->form->getControlGroup('title'); ?>
                         <?php echo $this->form->getControlGroup('description'); ?>
                         <?php echo $this->form->getControlGroup('url'); ?>
