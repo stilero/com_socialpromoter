@@ -13,30 +13,30 @@
         <field name="title" type="text"
             class="inputbox input-xxlarge input-large-text"
             size="40" label="JGLOBAL_TITLE"
-            description="COM_WEBLINKS_FIELD_TITLE_DESC" 
+            description="COM_SOCIALPROMOTER_FIELD_PLUGIN_TITLE_DESC" 
             filter="JComponentHelper::filterText"
         />
         <field name="description" type="textarea" class="inputbox span12"
             filter="JComponentHelper::filterText"
-            label="JGLOBAL_DESCRIPTION" description="COM_WEBLINKS_FIELD_DESCRIPTION_DESC" 
+            label="JGLOBAL_DESCRIPTION" description="COM_SOCIALPROMOTER_FIELD_DESCRIPTION_DESC" 
         />
         <field name="url" type="url"
             class="inputbox span12"
             filter="url"
-            size="40" label="COM_WEBLINKS_FIELD_URL_LABEL"
-            description="COM_WEBLINKS_FIELD_URL_DESC" required="true" 
+            size="40" label="COM_SOCIALPROMOTER_FIELD_URL"
+            description="COM_SOCIALPROMOTER_FIELD_URL_DESC" required="true" 
         />
         <field name="tags" type="text"
             class="inputbox span12"
             filter="text"
-            size="40" label="COM_WEBLINKS_FIELD_TAGS_LABEL"
-            description="COM_WEBLINKS_FIELD_TAGS_DESC" 
+            size="40" label="COM_SOCIALPROMOTER_FIELD_TAGS_LABEL"
+            description="COM_SOCIALPROMOTER_FIELD_TAGS_DESC" 
         />
         <field name="created" type="date"
             class="inputbox span12"
             filter="text"
-            size="40" label="COM_WEBLINKS_FIELD_CREATE_DATE_LABEL"
-            description="COM_WEBLINKS_FIELD_CREATE_DATE_DESC" 
+            size="40" label="COM_SOCIALPROMOTER_FIELD_CREATE_DATE_LABEL"
+            description="COM_SOCIALPROMOTER_FIELD_CREATE_DATE_DESC" 
         />
     </fieldset>
 </form>

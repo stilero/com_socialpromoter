@@ -83,13 +83,9 @@
                     <folder>tables</folder>
                     <folder>sql</folder>
             </files>
-            <!--
             <languages folder="language">
 	       <language tag="en-GB">admin/language/en-GB.com_socialpromoter.ini</language>
-	       <language tag="sv-SE">admin/language/sv-SE.com_socialpromoter.ini</language>
-               <language tag="en-GB">admin/language/en-GB.com_socialpromoter.ini</language>
-	       <language tag="sv-SE">admin/language/sv-SE.com_socialpromoter.ini</language>
+               <language tag="en-GB">admin/language/en-GB.com_socialpromoter.sys.ini</language>
 	    </languages>
-            -->
 	</administration>
 </extension>
