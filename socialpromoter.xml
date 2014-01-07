@@ -28,12 +28,11 @@
 		<folder>views</folder>
 		<folder>controllers</folder>
 	</files>
-        <!--
         <media destination="socialpromoter">
             <folder>assets/js</folder>
-            <folder>assets/images</folder>
             <folder>assets/css</folder>
         </media>
+        <!--
 	<languages folder="language">
             <language tag="en-GB">site/language/en-GB.com_socialpromoter.ini</language>
             <language tag="sv-SE">site/language/sv-SE.com_socialpromoter.ini</language>
