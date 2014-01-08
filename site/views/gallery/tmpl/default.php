@@ -24,7 +24,7 @@ JHTML::stylesheet(JUri::root().'administrator/components/com_socialpromoter/asse
     <div class="row">
         <?php $i=0; ?>
         <?php foreach ($this->items as $item) : ?>
-            <div class="span6">
+            <div>
                  <div class="thumbnail">
                  <a data-toggle="lightbox" href="#imgLightbox<?php echo $i; ?>">
                     <img src="<?php echo $item->url; ?>" class="img-responsive"/>
@@ -32,7 +32,7 @@ JHTML::stylesheet(JUri::root().'administrator/components/com_socialpromoter/asse
                      <p></p>
                 <p class="text-center">
                     
-                        <i class="icon-thumbs-up"></i> 34  <i class="icon-comment"></i> 17  <a  class="accordion-toggle" data-toggle="collapse" data-parent="#accordion<?php echo $i; ?>" href="#socLightbox<?php echo $i; ?>"><i class="icon-resize-full"></i> Read Comments
+                    <i class="icon-thumbs-up"></i> 34  <i class="icon-comment"></i> <?php echo count($item->comments); ?>  <a  class="accordion-toggle" data-toggle="collapse" data-parent="#accordion<?php echo $i; ?>" href="#socLightbox<?php echo $i; ?>"><i class="icon-resize-full"></i> Read Comments
                     </a>
                 </p>
                 <div id="socLightbox<?php echo $i; ?>" class="accordion-body collapse">
@@ -40,22 +40,18 @@ JHTML::stylesheet(JUri::root().'administrator/components/com_socialpromoter/asse
                         <thead>
                             <tr>
                                 <th><i class="icon-time"> </i></th>
+                                <th><i class="icon-user"> </i></th>
                                 <th><i class="icon-comment"> </i></th>
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <td>6d ago</td>
-                                <td>The Comment</td>
-                            </tr>
-                            <tr>
-                                <td>8d ago</td>
-                                <td>The Comment</td>
-                            </tr>
-                            <tr>
-                                <td>2w ago</td>
-                                <td>The Comment</td>
-                            </tr>
+                            <?php foreach ($item->comments as $comment) : ?>
+                                <tr>
+                                    <td><?php echo $comment->time; ?></td>
+                                    <td><?php echo $comment->name; ?></td>
+                                    <td><?php echo $comment->text; ?></td>
+                                </tr>
+                            <?php endforeach; ?>
                         </tbody>
                     </table>
                 </div>

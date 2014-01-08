@@ -14,6 +14,7 @@ defined('_JEXEC') or die('Restricted access');
  
 // import Joomla view library
 jimport('joomla.application.component.view');
+jimport( 'joomla.plugin.helper' );
  
 /**
  * HTML View class for the GALLERY Class
@@ -26,7 +27,20 @@ class SocialpromoterViewGallery extends JViewLegacy{
     function display($tpl = null) {
         $model = $this->getModel('gallery');
         $items = $model->getItems();
-        $this->assignRef('items', $items);
+        
+        $itemsWithComments = array();
+        foreach ($items as $item) {
+            $dispatcher = JDispatcher::getInstance();
+            JPluginHelper::importPlugin('socialpromoter', $item->plugin, false);
+            $className = 'plgSocialpromoter'.ucfirst($item->plugin);
+            $pluginClass = new $className($dispatcher, array());
+            $response = $pluginClass->getComments($item->msg);
+            if(!empty($response)){
+                $item->comments = $response;
+            }
+            $itemsWithComments[] = $item;
+        }
+        $this->assignRef('items', $itemsWithComments);
         parent::display($tpl);
     }
 }
