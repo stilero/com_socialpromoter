@@ -32,7 +32,7 @@ JHTML::stylesheet(JUri::root().'administrator/components/com_socialpromoter/asse
                      <p></p>
                 <p class="text-center">
                     
-                    <i class="icon-thumbs-up"></i> 34  <i class="icon-comment"></i> <?php echo count($item->comments); ?>  <a  class="accordion-toggle" data-toggle="collapse" data-parent="#accordion<?php echo $i; ?>" href="#socLightbox<?php echo $i; ?>"><i class="icon-resize-full"></i> Read Comments
+                    <i class="icon-thumbs-up"></i> 34  <i class="icon-comment"></i> <?php if (isset($item->comments)) echo count($item->comments); ?>  <a  class="accordion-toggle" data-toggle="collapse" data-parent="#accordion<?php echo $i; ?>" href="#socLightbox<?php echo $i; ?>"><i class="icon-resize-full"></i> Read Comments
                     </a>
                 </p>
                 <div id="socLightbox<?php echo $i; ?>" class="accordion-body collapse">

@@ -30,8 +30,9 @@ class SocialpromoterModelGallery extends JModelLegacy{
     public function getItems(){
         $db = JFactory::getDbo();
         $query = $db->getQuery(TRUE);
-        $query->select('*')->from(self::$_logTable.' AS '.$db->qn('l'));
-        $query->innerJoin(self::$_queueTable.' AS '.$db->qn('q').' ON q.url=l.url');
+        $query->select('l.url, l.plugin, l.msg, q.title, q.description, q.tags')->from(self::$_logTable.' AS '.$db->qn('l'));
+        $query->leftJoin(self::$_queueTable.' AS '.$db->qn('q').' ON q.url=l.url');
+        $query->where('q.posted != '.$db->q('0000-00-00 00:00:00'));
         $db->setQuery($query);
         $result = $db->loadObjectList();
         if($result === null){
