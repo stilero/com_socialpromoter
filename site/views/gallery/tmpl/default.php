@@ -66,7 +66,7 @@ JHTML::stylesheet(JUri::root().'administrator/components/com_socialpromoter/asse
                 <div class='lightbox-content'>
                     <div>
                         <img src="<?php echo $item->url; ?>">
-                        <div class="lightbox-caption"><p>The caption</p></div>
+                        <div class="lightbox-caption"><p><strong><?php echo $item->title; ?></strong></p><p><?php echo $item->description; ?></p></div>
                     </div>
                 </div>  
             </div>

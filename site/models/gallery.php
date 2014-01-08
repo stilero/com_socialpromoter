@@ -17,8 +17,8 @@ jimport('joomla.application.component.model');
  
 class SocialpromoterModelGallery extends JModelLegacy{
     protected $_gallery;
-    private $_table;
-    static private $_tableName = '#__com_socialpromoter_logs';
+    static private $_logTable = '#__com_socialpromoter_logs';
+    static private $_queueTable = '#__com_socialpromoter_queue';
 
     public function __construct() {
         parent::__construct();
@@ -30,7 +30,8 @@ class SocialpromoterModelGallery extends JModelLegacy{
     public function getItems(){
         $db = JFactory::getDbo();
         $query = $db->getQuery(TRUE);
-        $query->select('*')->from(self::$_tableName);
+        $query->select('*')->from(self::$_logTable.' AS '.$db->qn('l'));
+        $query->innerJoin(self::$_queueTable.' AS '.$db->qn('q').' ON q.url=l.url');
         $db->setQuery($query);
         $result = $db->loadObjectList();
         if($result === null){
@@ -40,4 +41,5 @@ class SocialpromoterModelGallery extends JModelLegacy{
             return $result;
         }
     }
+    
 }
