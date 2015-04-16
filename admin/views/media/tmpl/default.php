@@ -2,7 +2,7 @@
 /**
  * View template com_socialpromoter
  *
- * @version  1.0
+ * @version  1.1
  * @author Daniel Eliasson <daniel at stilero.com>
  * @copyright  (C) 2013-dec-29 Stilero Webdesign (http://www.stilero.com)
  * @category Components
@@ -23,6 +23,9 @@ defined('_JEXEC') or die('Restricted access');
                     </th>
                     <th width="10%" class="nowrap hidden-phone">
                         <?php echo JText::_('url'); ?>
+                    </th>
+                    <th width="10%" class="nowrap hidden-phone">
+                        <?php echo JText::_('button'); ?>
                     </th>
                     <th width="10%" class="nowrap hidden-phone">
                         <?php echo JText::_('button'); ?>
@@ -49,6 +52,18 @@ defined('_JEXEC') or die('Restricted access');
                             <input type="hidden" name="path" value="<?php echo $item; ?>" />
                             <?php echo JHtml::_( 'form.token' ); ?>
                             <button type="submit" class="btn">Add To Queue</button>
+                        </form>
+                    </td>
+                    <td>
+                        <form id="queueform<?php echo $i; ?>" name="queueform<?php echo $i; ?>" action="">
+                            <input type="hidden" name="option" value="com_socialpromoter" />
+                            <input type="hidden" name="task" value="hide" />
+                            <input type="hidden" name="format" value="raw" />
+                            <input type="hidden" name="view" value="queues" />
+                            <input type="hidden" name="row" value="row<?php echo $i++; ?>" />
+                            <input type="hidden" name="path" value="<?php echo $item; ?>" />
+                            <?php echo JHtml::_( 'form.token' ); ?>
+                            <button type="submit" class="btn">Hide</button>
                         </form>
                     </td>
                 </tr>

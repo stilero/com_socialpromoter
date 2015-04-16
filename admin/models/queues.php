@@ -2,7 +2,7 @@
 /**
  * Description of com_socialpromoter
  *
- * @version  1.0
+ * @version  1.1
  * @author Daniel Eliasson <daniel at stilero.com>
  * @copyright  (C) 2013-dec-29 Stilero Webdesign (http://www.stilero.com)
  * @category Components
@@ -85,10 +85,48 @@ class SocialpromoterModelQueues extends JModelLegacy{
         $description = $Ipct->description;
         $url = str_replace(JPATH_ROOT.'/', JUri::root(), $imagepath);
         $hashtagged = array_map(array($this, 'addHashtag'), $Ipct->keywords);
-        $tags = implode(', ', $hashtagged);
+        $tags = implode(' ', $hashtagged);
         $date = new JDate();
         $data = array(
             'plugin' => $plugin,
+            'title' => $title,
+            'description' => $description,
+            'url' => $url,
+            'tags' => $tags,
+            'created' => $date->toSql()
+        );
+        $table = $this->getTable('queue');
+        $table->reset();
+        $table->id = 0;
+        if(!$table->bind($data)){
+            $this->setError($this->_db->getErrorMsg());
+            return false;
+        }
+        if(!$table->check()){
+            $this->setError($this->_db->getErrorMsg());
+            return false;
+        }
+        if(!$table->store()){
+            $this->setError($this->_db->getErrorMsg());
+            return false;
+        }
+        return true;
+    }
+    /**
+     * Hides an image from the list provided
+     * @param string $imagepath URL to the image
+     * @param string $plugin Name of the plugin to use
+     */
+    protected function hideFromList($imagepath){
+        $Ipct = new StileroSPIptc($imagepath);
+        $title = $Ipct->title;
+        $description = $Ipct->description;
+        $url = str_replace(JPATH_ROOT.'/', JUri::root(), $imagepath);
+        $hashtagged = array_map(array($this, 'addHashtag'), $Ipct->keywords);
+        $tags = implode(', ', $hashtagged);
+        $date = new JDate();
+        $data = array(
+            'plugin' => "void",
             'title' => $title,
             'description' => $description,
             'url' => $url,
@@ -121,6 +159,21 @@ class SocialpromoterModelQueues extends JModelLegacy{
         foreach ($plugins as $plugin) {
             $this->addWithPlugin($imagepath, $plugin->name);            
         }
+        return true;
+    }
+    
+    /**
+     * Hides an image 
+     * @param string $imagepath URL to the image
+     */
+    function hide($imagepath){
+        //$plugins = JPluginHelper::getPlugin('socialpromoter');
+        /*
+        foreach ($plugins as $plugin) {
+            $this->addWithPlugin($imagepath, $plugin->name);            
+        }
+         */
+        $this->hideFromList($imagepath);
         return true;
     }
     

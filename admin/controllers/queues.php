@@ -2,7 +2,7 @@
 /**
  * Description of com_socialpromoter
  *
- * @version  1.0
+ * @version  1.1
  * @author Daniel Eliasson <daniel at stilero.com>
  * @copyright  (C) 2013-dec-29 Stilero Webdesign (http://www.stilero.com)
  * @category Components
@@ -47,6 +47,13 @@ class SocialpromoterControllerQueues extends JControllerLegacy{
         $model = $this->getModel( self::$modelName );
         $view->setModel( $model, true );
         $view->add();
+    }
+    
+    function hide(){
+        $view = $this->getView( self::$viewName, 'html' );
+        $model = $this->getModel( self::$modelName );
+        $view->setModel( $model, true );
+        $view->hide();
     }
     
     function delete(){
