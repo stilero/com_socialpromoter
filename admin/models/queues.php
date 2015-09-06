@@ -148,6 +148,13 @@ class SocialpromoterModelQueues extends JModelLegacy{
             $this->setError($this->_db->getErrorMsg());
             return false;
         }
+        $db = JFactory::getDbo();
+        $query = $db->getQuery(true);
+        $query->update('#__com_socialpromoter_queue');
+        $query->set('posted='.$db->q($date->toSql()));
+        $query->where('url='.$db->q($url));
+        $db->setQuery($query);
+        $db->query();
         return true;
     }
     /**
@@ -174,6 +181,7 @@ class SocialpromoterModelQueues extends JModelLegacy{
         }
          */
         $this->hideFromList($imagepath);
+        
         return true;
     }
     

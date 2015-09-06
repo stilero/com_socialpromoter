@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <extension version="2.5" type="component" method="upgrade">
-	<name>Social Promoter</name>8
+	<name>Social Promoter</name>
 	<author>Daniel Eliasson (daniel@stilero.com)</author>
 	<creationDate>2013-dec-25</creationDate>
 	<copyright>Copyright (c) 2013-dec-25 Stilero Webdesign (http://www.stilero.com). All rights reserved.</copyright>
 	<authorEmail>joomla@stilero.com</authorEmail>
 	<authorUrl>www.stilero.com</authorUrl>
-	<version>1.1</version>
+	<version>1.2</version>
 	<license>GPLv2</license>
 	<description>Description</description>
         <install>

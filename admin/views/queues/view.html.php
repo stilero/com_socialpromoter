@@ -69,4 +69,18 @@ class SocialpromoterViewQueues extends JViewLegacy{
         $this->setLayout('raw');
         parent::display();
     }
+    function hide(){
+        SocialpromoterMenuhelper::addSubmenu('queues');
+        $app = JFactory::getApplication();
+        JSession::checkToken('get') or die( 'Invalid Token' );
+        $model = $this->getModel();
+        $path = $app->input->getString('path');
+        $result = false;
+        if(!$model->isQueued($path)){
+            $result = $model->hide($path);
+        }
+        $this->assignRef('result', $result);
+        $this->setLayout('raw');
+        parent::display();
+    }
 }

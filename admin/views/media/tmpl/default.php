@@ -48,14 +48,14 @@ defined('_JEXEC') or die('Restricted access');
                             <input type="hidden" name="task" value="add" />
                             <input type="hidden" name="format" value="raw" />
                             <input type="hidden" name="view" value="queues" />
-                            <input type="hidden" name="row" value="row<?php echo $i++; ?>" />
+                            <input type="hidden" name="row" value="row<?php echo $i; ?>" />
                             <input type="hidden" name="path" value="<?php echo $item; ?>" />
                             <?php echo JHtml::_( 'form.token' ); ?>
                             <button type="submit" class="btn">Add To Queue</button>
                         </form>
                     </td>
                     <td>
-                        <form id="queueform<?php echo $i; ?>" name="queueform<?php echo $i; ?>" action="">
+                        <form id="hideme<?php echo $i; ?>" name="hideme<?php echo $i; ?>" action="">
                             <input type="hidden" name="option" value="com_socialpromoter" />
                             <input type="hidden" name="task" value="hide" />
                             <input type="hidden" name="format" value="raw" />

@@ -1,7 +1,7 @@
 /**
  * Queue JavaScript
  *
- * @version  1.0
+ * @version  1.1
  * @author Daniel Eliasson <daniel at stilero.com>
  * @copyright  (C) 2013-dec-29 Stilero Webdesign (http://www.stilero.com)
  * @category Components
@@ -21,7 +21,7 @@ jQuery(function($){
                 '&times;</button>'+
                 message
                 +'</div>';
-        $(html).appendTo('#social_promoter_alert');
+        //$(html).appendTo('#social_promoter_alert');
     };
     
     /**

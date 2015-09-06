@@ -1,7 +1,7 @@
 /**
  * Queue JavaScript
  *
- * @version  1.0
+ * @version  1.1
  * @author Daniel Eliasson <daniel at stilero.com>
  * @copyright  (C) 2013-dec-29 Stilero Webdesign (http://www.stilero.com)
  * @category Components
@@ -21,7 +21,8 @@ jQuery(function($){
                 '&times;</button>'+
                 message
                 +'</div>';
-        $(html).appendTo('#social_promoter_alert');
+        //$(html).appendTo('#social_promoter_alert');
+        //$(html).html('#social_promoter_alert');
     };
     
     /**
@@ -36,6 +37,7 @@ jQuery(function($){
                 message
                 +'</div>';
         $(html).appendTo('#social_promoter_alert');
+        //$(html).html('#social_promoter_alert');
     };
     
     /**
@@ -50,6 +52,7 @@ jQuery(function($){
                 message
                 +'</div>';
         $(html).appendTo('#social_promoter_alert');
+        //$(html).html('#social_promoter_alert');
     };
     
     /**
@@ -72,6 +75,26 @@ jQuery(function($){
         $.getJSON('index.php', params, function(data){
             if(data.meta.code == '200'){
                 successAlert('<strong>Added!</strong> Image added to queue');
+                hideRow(row.value);
+            }else{
+                failAlert('<strong>Warning!</strong><br />' + data.meta.error_message, '#likedialog');
+            }
+        }).error(function(){
+            errorAlert('<strong>Error!</strong> server error occured.', '#likedialog');
+        });
+    });
+    
+    /**
+     * Submits the row to the Queue
+     */
+    $('form[id^="hideme"]').submit(function(e){
+        e.preventDefault();
+        var params = $(this).serialize();
+        var row = this.row;
+        hideRow(row.value);
+        $.getJSON('index.php', params, function(data){
+            if(data.meta.code == '200'){
+                successAlert('<strong>Hidden!</strong> Image hidden from queue');
                 hideRow(row.value);
             }else{
                 failAlert('<strong>Warning!</strong><br />' + data.meta.error_message, '#likedialog');
